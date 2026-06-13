@@ -8,8 +8,8 @@ echo -e "\033[36mHealthLink を起動します...\033[0m"
 
 # ルートの .env が存在するか確認
 if [ ! -f "$SCRIPT_DIR/.env" ]; then
-  echo -e "\033[31m[ERROR] .env が見つかりません。.env.example をコピーして .env を作成してください。\033[0m"
-  echo "  cp .env.example .env"
+  echo -e "\033[31m[ERROR] .env が見つかりません。env.example をコピーして .env を作成してください。\033[0m"
+  echo "  cp env.example .env"
   exit 1
 fi
 
