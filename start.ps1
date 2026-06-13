@@ -7,8 +7,8 @@ Write-Host "HealthLink を起動します..." -ForegroundColor Cyan
 
 # ルートの .env が存在するか確認
 if (-not (Test-Path "$ROOT\.env")) {
-  Write-Host "[ERROR] .env が見つかりません。.env.example をコピーして .env を作成してください。" -ForegroundColor Red
-  Write-Host "  cp .env.example .env" -ForegroundColor Yellow
+  Write-Host "[ERROR] .env が見つかりません。env.example をコピーして .env を作成してください。" -ForegroundColor Red
+  Write-Host "  cp env.example .env" -ForegroundColor Yellow
   exit 1
 }
 
