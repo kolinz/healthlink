@@ -5,13 +5,6 @@ $ROOT = $PSScriptRoot
 
 Write-Host "HealthLink を起動します..." -ForegroundColor Cyan
 
-# ルートの .env が存在するか確認
-if (-not (Test-Path "$ROOT\.env")) {
-  Write-Host "[ERROR] .env が見つかりません。env.example をコピーして .env を作成してください。" -ForegroundColor Red
-  Write-Host "  cp env.example .env" -ForegroundColor Yellow
-  exit 1
-}
-
 # バックエンド起動（別ウィンドウ）
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '$ROOT\backend'; npm run dev" -WindowStyle Normal
 
