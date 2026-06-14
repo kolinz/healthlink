@@ -35,7 +35,7 @@ cd healthlink
 ### 2-2. 環境変数ファイルの作成
 
 ```bash
-cp .env.example .env
+cp env.example .env
 ```
 
 > **v1.14以降:** 環境変数はルートディレクトリの `.env` に統合されました。`backend/.env` と `frontend/.env` は不要です。
@@ -55,6 +55,7 @@ cd backend && npm install
 
 # frontend
 cd ../frontend && npm install
+cd ../
 ```
 
 ### 2-4. データベースのマイグレーション
