@@ -28,7 +28,7 @@ Docker は不要です。Node.js + npm のみで動作します。
 ### 2-1. リポジトリのクローン
 
 ```bash
-git clone https://github.com/<your-org>/healthlink.git
+git clone https://github.com/kolinz/healthlink.git
 cd healthlink
 ```
 
