@@ -45,6 +45,7 @@ cp .env.example .env
 
 | 変数 | 説明 |
 |-----|------|
+| `CORS_ORIGIN` | フロントエンドのURLと一致させる必要がある |
 | `JWT_ACCESS_SECRET` | 32文字以上の任意の文字列 |
 | `JWT_REFRESH_SECRET` | 32文字以上の任意の文字列 |
 
