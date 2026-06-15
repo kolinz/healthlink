@@ -45,9 +45,26 @@ cp .env.example .env
 
 | 変数 | 説明 |
 |-----|------|
-| `CORS_ORIGIN` | フロントエンドのURLと一致させる必要がある |
 | `JWT_ACCESS_SECRET` | 32文字以上の任意の文字列 |
 | `JWT_REFRESH_SECRET` | 32文字以上の任意の文字列 |
+| `CORS_ORIGIN` | フロントエンドのURL（例: `http://3.114.184.81:3000` または `http://yourdomain.com:3000`） |
+| `VITE_API_URL` | バックエンドのURL（例: `http://3.114.184.81:8080` または `http://yourdomain.com:8080`） |
+
+> **ローカル開発環境の場合:** `CORS_ORIGIN=http://localhost:3000` / `VITE_API_URL=http://localhost:8080` のままで構いません。
+>
+> **外部公開する場合:** サーバーのIPアドレスまたはドメイン名に変更してください。また、ファイアウォールでポート **3000**（フロントエンド）と **8080**（バックエンドAPI）を開放してください。
+
+> **外部公開時の追加設定:** `frontend/vite.config.ts` の `server` に `host: '0.0.0.0'` と `allowedHosts` が必要です。デフォルトでは `localhost` のみリッスンするため、外部からアクセスできません。
+>
+> ```typescript
+> server: {
+>   port: 3000,
+>   host: '0.0.0.0',
+>   allowedHosts: ['.example.com'],  // ← 使用するドメインに変更（例: ['.abc.online']）
+> }
+> ```
+>
+> `allowedHosts` を設定しないと、ドメイン経由でアクセスした際に `Blocked request` エラーが発生します。IPアドレス直打ちの場合は不要です。
 
 ```bash
 nano .env
@@ -125,9 +142,10 @@ http://localhost:3000 にアクセスし、以下でログインします：
 
 | URL | 説明 |
 |-----|------|
-| http://localhost:3000 | アプリケーション |
-| http://localhost:8080/api-docs | Swagger UI（API仕様書） |
-| http://localhost:8080/api-docs.json | OpenAPI JSON |
+| http://localhost:3000 | アプリケーション（ローカル） |
+| http://localhost:8080/api-docs | Swagger UI（ローカル） |
+| http://<サーバーIP or ドメイン>:3000 | アプリケーション（外部公開時） |
+| http://<サーバーIP or ドメイン>:8080/api-docs | Swagger UI（外部公開時） |
 
 ---
 
