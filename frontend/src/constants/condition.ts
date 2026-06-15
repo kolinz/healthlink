@@ -5,8 +5,8 @@ export const CONDITION_OPTIONS = [
   { value: 5, label: 'わくわく', emoji: '🌟' },
   { value: 4, label: '楽しい',   emoji: '😊' },
   { value: 3, label: 'ふつう',   emoji: '😐' },
-  { value: 2, label: 'しんどい', emoji: '😔' },
-  { value: 1, label: 'つらい',   emoji: '😢' },
+  { value: 2, label: 'つらい', emoji: '😔' },
+  { value: 1, label: 'しんどい',   emoji: '😢' },
 ] as const;
 
 export type ConditionValue = typeof CONDITION_OPTIONS[number]['value'];
