@@ -151,14 +151,14 @@ export default function HealthInputPage() {
           rightLabel="😋 食欲満々"
         />
 
-        {/* ④ 熱っぽさ */}
+        {/* ④ 怠さ */}
         <ScoreSlider
-          label="熱っぽさ 🌡️"
+          label="怠（だる）さ 🌡️"
           description="体温計は不要です。今日の体感で選んでください。"
           value={feverScore}
           onChange={setFeverScore}
-          leftLabel="😊 全く熱くない"
-          rightLabel="🥵 とても熱っぽい"
+          leftLabel="😊 全く怠くない"
+          rightLabel="🥵 とても怠い"
         />
 
         {/* ⑤ ぐっすり度 */}
