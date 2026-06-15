@@ -132,15 +132,26 @@ http://localhost:3000 にアクセスし、以下でログインします：
 
 ## 5. 各ロールでのログイン確認
 
-| ユーザー名 | パスワード | ロール | 初期遷移先 |
-|-----------|-----------|--------|----------|
-| admin | Admin1234! | admin | /admin/users |
-| suzuki | Doctor1234! | doctor | /dashboard |
-| tamura | Nurse1234! | nurse | /dashboard |
-| yamada | Patient1234! | patient | /（ホーム） |
+| ユーザー名 | パスワード | ロール | 氏名 |
+|-----------|-----------|--------|------|
+| admin | Admin1234! | admin | — |
+| aoyama | Doctor1234! | 医師 | 青山 遥 |
+| hayashi | Doctor1234! | 医師 | 林 澪 |
+| shimizu | Nurse1234! | 看護師 | 清水 蒼 |
+| nishida | Nurse1234! | 看護師 | 西田 凪 |
+| sakura01 | User1234! | 学生 | 青木 いずみ |
+| kaze02 | User1234! | 学生 | 石川 かなた |
+| tsuki03 | User1234! | 学生 | 上田 ひびき |
+| hoshi04 | User1234! | 学生 | 江口 なつき |
+| yama05 | User1234! | 学生 | 小野 はるか |
+| umi06 | User1234! | 学生 | 川田 みなと |
+| sora07 | User1234! | 学生 | 木村 りく |
+| hana08 | User1234! | 学生 | 坂本 こころ |
+| mori09 | User1234! | 学生 | 田中 いつき |
+| tani10 | User1234! | 学生 | 中村 みずほ |
 
-> yamada は `consent_agreed=1` のため同意画面はスキップされます。
-> admin が作成したユーザーは初回ログイン時に `/consent` へリダイレクトされます。
+> 医師・看護師は初回ログイン時に `/consent` へリダイレクトされます。
+> 学生（sakura01〜tani10）は `consent_agreed=1` のため同意画面はスキップされます。
 
 ---
 
