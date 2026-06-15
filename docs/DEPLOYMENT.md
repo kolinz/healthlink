@@ -47,8 +47,8 @@ cp .env.example .env
 |-----|------|
 | `JWT_ACCESS_SECRET` | 32文字以上の任意の文字列 |
 | `JWT_REFRESH_SECRET` | 32文字以上の任意の文字列 |
-| `CORS_ORIGIN` | フロントエンドのURL（例: `http://3.114.184.81:3000` または `http://yourdomain.com:3000`） |
-| `VITE_API_URL` | バックエンドのURL（例: `http://3.114.184.81:8080` または `http://yourdomain.com:8080`） |
+| `CORS_ORIGIN` | フロントエンドのURL（例: `http://xxx.xxx.xxx.xxx:3000` または `http://yourdomain.com:3000`） |
+| `VITE_API_URL` | バックエンドのURL（例: `http://xxx.xxx.xxx.xxx:8080` または `http://yourdomain.com:8080`） |
 
 > **ローカル開発環境の場合:** `CORS_ORIGIN=http://localhost:3000` / `VITE_API_URL=http://localhost:8080` のままで構いません。
 >
