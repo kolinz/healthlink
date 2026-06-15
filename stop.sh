@@ -6,7 +6,6 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo -e "\033[36mHealthLink を停止します...\033[0m"
 
-# プロセスグループごと終了する関数
 kill_process() {
   local NAME=$1
   local PORT=$2
@@ -15,7 +14,6 @@ kill_process() {
   if [ -f "$PID_FILE" ]; then
     local PID=$(cat "$PID_FILE")
     if kill -0 "$PID" 2>/dev/null; then
-      # プロセスグループIDを取得して、グループごと終了
       local PGID=$(ps -o pgid= -p "$PID" 2>/dev/null | tr -d ' ')
       if [ -n "$PGID" ] && [ "$PGID" != "0" ]; then
         kill -- -"$PGID" 2>/dev/null
@@ -27,14 +25,15 @@ kill_process() {
       echo "  $NAME はすでに停止しています。"
     fi
     rm -f "$PID_FILE"
-  fi
-
-  # ポートが残っている場合は念のため終了
-  sleep 1
-  local REMAINING=$(lsof -ti:"$PORT" 2>/dev/null)
-  if [ -n "$REMAINING" ]; then
-    kill "$REMAINING" 2>/dev/null
-    echo "  $NAME (port $PORT) の残存プロセスを終了しました。"
+  else
+    # PIDファイルがない場合はポートで検索（タイムアウト3秒）
+    local REMAINING=$(timeout 3 lsof -ti:"$PORT" 2>/dev/null)
+    if [ -n "$REMAINING" ]; then
+      kill "$REMAINING" 2>/dev/null
+      echo "  $NAME (port $PORT) を停止しました。"
+    else
+      echo "  $NAME (port $PORT) は起動していません。"
+    fi
   fi
 }
 
@@ -43,3 +42,6 @@ kill_process "frontend" 3000
 
 echo ""
 echo -e "\033[32m停止完了しました。\033[0m"
+
+# ターミナルの設定をリセット
+stty sane
