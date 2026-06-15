@@ -46,7 +46,7 @@ export default function SystemSettingsPage() {
   return (
     <div className="p-8">
       <div className="max-w-2xl">
-        <h1 className="text-2xl font-bold text-text-main mb-2">システム設定</h1>
+        <h1 className="text-2xl font-bold text-text-main mb-2">システムプロンプト設定</h1>
         <p className="text-sm text-gray-500 mb-6">AI相談時に使用するシステムプロンプトを管理します</p>
 
         {/* システムプロンプト設定カード */}
