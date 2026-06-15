@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { getDailyLogs } from '../api/dailyLogs';
 import { conditionLabel } from '../constants/condition';
-import { formatDateTimeFull, formatDateShort } from '../utils/date';
+import { formatDateTimeFull, formatDateShort, parseDbDate } from '../utils/date';
 
 const STEPS_LABEL: Record<string, string> = {
   under_2000: '2,000歩未満',
@@ -33,7 +33,7 @@ export default function PatientHomePage() {
     getDailyLogs()
       .then((data) => {
         const sorted = [...data].sort(
-          (a, b) => new Date(b.logged_at).getTime() - new Date(a.logged_at).getTime()
+          (a, b) => (parseDbDate(b.logged_at)?.getTime() ?? 0) - (parseDbDate(a.logged_at)?.getTime() ?? 0)
         );
         setLogs(sorted);
       })
