@@ -21,14 +21,11 @@ console.log('[seed] シードデータの投入を開始します');
 // users
 // ============================================================
 const userIds = {
-  admin:    uuidv4(),
-  // 医師 2名
-  doctor1:  uuidv4(),
-  doctor2:  uuidv4(),
-  // 看護師 2名
-  nurse1:   uuidv4(),
-  nurse2:   uuidv4(),
-  // 患者（学生）10名
+  admin:     uuidv4(),
+  doctor1:   uuidv4(),
+  doctor2:   uuidv4(),
+  nurse1:    uuidv4(),
+  nurse2:    uuidv4(),
   patient1:  uuidv4(),
   patient2:  uuidv4(),
   patient3:  uuidv4(),
@@ -49,27 +46,24 @@ const insertUser = db.prepare(`
 const now = new Date().toISOString();
 
 // admin
-insertUser.run({ id: userIds.admin, username: 'admin', password_hash: bcrypt.hashSync('Admin1234!', BCRYPT_ROUNDS), role: 'admin', is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null, created_at: now });
-
+insertUser.run({ id: userIds.admin,     username: 'admin',    password_hash: bcrypt.hashSync('Admin1234!',  BCRYPT_ROUNDS), role: 'admin',   is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null,  created_at: now });
 // 医師
-insertUser.run({ id: userIds.doctor1, username: 'aoyama', password_hash: bcrypt.hashSync('Doctor1234!', BCRYPT_ROUNDS), role: 'doctor', is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null, created_at: now });
-insertUser.run({ id: userIds.doctor2, username: 'hayashi', password_hash: bcrypt.hashSync('Doctor1234!', BCRYPT_ROUNDS), role: 'doctor', is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null, created_at: now });
-
+insertUser.run({ id: userIds.doctor1,   username: 'aoyama',   password_hash: bcrypt.hashSync('Doctor1234!', BCRYPT_ROUNDS), role: 'doctor',  is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null,  created_at: now });
+insertUser.run({ id: userIds.doctor2,   username: 'hayashi',  password_hash: bcrypt.hashSync('Doctor1234!', BCRYPT_ROUNDS), role: 'doctor',  is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null,  created_at: now });
 // 看護師
-insertUser.run({ id: userIds.nurse1, username: 'shimizu', password_hash: bcrypt.hashSync('Nurse1234!', BCRYPT_ROUNDS), role: 'nurse', is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null, created_at: now });
-insertUser.run({ id: userIds.nurse2, username: 'nishida', password_hash: bcrypt.hashSync('Nurse1234!', BCRYPT_ROUNDS), role: 'nurse', is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null, created_at: now });
-
-// 患者（学生）偽名
-insertUser.run({ id: userIds.patient1,  username: 'sakura01',  password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
-insertUser.run({ id: userIds.patient2,  username: 'kaze02',    password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
-insertUser.run({ id: userIds.patient3,  username: 'tsuki03',   password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
-insertUser.run({ id: userIds.patient4,  username: 'hoshi04',   password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
-insertUser.run({ id: userIds.patient5,  username: 'yama05',    password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
-insertUser.run({ id: userIds.patient6,  username: 'umi06',     password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
-insertUser.run({ id: userIds.patient7,  username: 'sora07',    password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
-insertUser.run({ id: userIds.patient8,  username: 'hana08',    password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
-insertUser.run({ id: userIds.patient9,  username: 'mori09',    password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
-insertUser.run({ id: userIds.patient10, username: 'tani10',    password_hash: bcrypt.hashSync('User1234!', BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now, consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.nurse1,    username: 'shimizu',  password_hash: bcrypt.hashSync('Nurse1234!',  BCRYPT_ROUNDS), role: 'nurse',   is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null,  created_at: now });
+insertUser.run({ id: userIds.nurse2,    username: 'nishida',  password_hash: bcrypt.hashSync('Nurse1234!',  BCRYPT_ROUNDS), role: 'nurse',   is_active: 1, consent_agreed: 0, consent_agreed_at: null, consent_version: null,  created_at: now });
+// 学生
+insertUser.run({ id: userIds.patient1,  username: 'sakura01', password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.patient2,  username: 'kaze02',   password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.patient3,  username: 'tsuki03',  password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.patient4,  username: 'hoshi04',  password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.patient5,  username: 'yama05',   password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.patient6,  username: 'umi06',    password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.patient7,  username: 'sora07',   password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.patient8,  username: 'hana08',   password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.patient9,  username: 'mori09',   password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
+insertUser.run({ id: userIds.patient10, username: 'tani10',   password_hash: bcrypt.hashSync('User1234!',   BCRYPT_ROUNDS), role: 'patient', is_active: 1, consent_agreed: 1, consent_agreed_at: now,  consent_version: '1.0', created_at: now });
 
 console.log('[seed] users: 15件投入完了');
 
@@ -81,25 +75,20 @@ const insertProfile = db.prepare(`
   VALUES (@id, @user_id, @name, @email, @position, @created_at)
 `);
 
-// 医師
-insertProfile.run({ id: uuidv4(), user_id: userIds.doctor1, name: '青山 遥', email: 'aoyama@example.com', position: '内科医', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.doctor2, name: '林 澪', email: 'hayashi@example.com', position: '精神科医', created_at: now });
-
-// 看護師
-insertProfile.run({ id: uuidv4(), user_id: userIds.nurse1, name: '清水 蒼', email: 'shimizu@example.com', position: '看護師長', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.nurse2, name: '西田 凪', email: 'nishida@example.com', position: '看護師', created_at: now });
-
-// 患者（偽名・学年を position に）
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient1,  name: '青木 いずみ',  email: 'sakura01@example.com',  position: '1年生', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient2,  name: '石川 かなた',    email: 'kaze02@example.com',    position: '2年生', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient3,  name: '上田 ひびき',  email: 'tsuki03@example.com',   position: '3年生', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient4,  name: '江口 なつき',  email: 'hoshi04@example.com',   position: '4年生', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient5,  name: '小野 はるか',  email: 'yama05@example.com',    position: '1年生', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient6,  name: '川田 みなと',  email: 'umi06@example.com',     position: '2年生', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient7,  name: '木村 りく',    email: 'sora07@example.com',    position: '3年生', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient8,  name: '坂本 こころ',  email: 'hana08@example.com',    position: '4年生', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient9,  name: '田中 いつき',  email: 'mori09@example.com',    position: '1年生', created_at: now });
-insertProfile.run({ id: uuidv4(), user_id: userIds.patient10, name: '中村 みずほ',  email: 'tani10@example.com',    position: '2年生', created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.doctor1,   name: '青山 遥',   email: 'aoyama@example.com',   position: '内科医',   created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.doctor2,   name: '林 澪',     email: 'hayashi@example.com',  position: '精神科医', created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.nurse1,    name: '清水 蒼',   email: 'shimizu@example.com',  position: '看護師長', created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.nurse2,    name: '西田 凪',   email: 'nishida@example.com',  position: '看護師',   created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient1,  name: '青木 いずみ', email: 'sakura01@example.com', position: '1年生',  created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient2,  name: '石川 かなた', email: 'kaze02@example.com',   position: '2年生',  created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient3,  name: '上田 ひびき', email: 'tsuki03@example.com',  position: '3年生',  created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient4,  name: '江口 なつき', email: 'hoshi04@example.com',  position: '4年生',  created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient5,  name: '小野 はるか', email: 'yama05@example.com',   position: '1年生',  created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient6,  name: '川田 みなと', email: 'umi06@example.com',    position: '2年生',  created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient7,  name: '木村 りく',   email: 'sora07@example.com',   position: '3年生',  created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient8,  name: '坂本 こころ', email: 'hana08@example.com',   position: '4年生',  created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient9,  name: '田中 いつき', email: 'mori09@example.com',   position: '1年生',  created_at: now });
+insertProfile.run({ id: uuidv4(), user_id: userIds.patient10, name: '中村 みずほ', email: 'tani10@example.com',   position: '2年生',  created_at: now });
 
 console.log('[seed] profiles: 14件投入完了');
 
@@ -115,48 +104,45 @@ db.prepare(`
 console.log('[seed] organizations: 1件投入完了');
 
 // ============================================================
-// user_organizations（医師・看護師・患者全員を同一組織に所属）
+// user_organizations
 // ============================================================
 const insertUserOrg = db.prepare(`
   INSERT INTO user_organizations (id, user_id, organization_id, assigned_at)
   VALUES (@id, @user_id, @organization_id, @assigned_at)
 `);
 
-const orgMembers = [
-  userIds.doctor1, userIds.doctor2,
-  userIds.nurse1, userIds.nurse2,
+for (const userId of [
+  userIds.doctor1, userIds.doctor2, userIds.nurse1, userIds.nurse2,
   userIds.patient1, userIds.patient2, userIds.patient3, userIds.patient4, userIds.patient5,
   userIds.patient6, userIds.patient7, userIds.patient8, userIds.patient9, userIds.patient10,
-];
-
-for (const userId of orgMembers) {
+]) {
   insertUserOrg.run({ id: uuidv4(), user_id: userId, organization_id: orgId, assigned_at: now });
 }
 
 console.log('[seed] user_organizations: 14件投入完了');
 
 // ============================================================
-// assignments（患者を医師・看護師に割当）
+// assignments
 // ============================================================
 const insertAssignment = db.prepare(`
   INSERT INTO assignments (id, patient_id, provider_id, assigned_at)
   VALUES (@id, @patient_id, @provider_id, @assigned_at)
 `);
 
-// doctor1 → patient1〜5
 for (const patientId of [userIds.patient1, userIds.patient2, userIds.patient3, userIds.patient4, userIds.patient5]) {
   insertAssignment.run({ id: uuidv4(), patient_id: patientId, provider_id: userIds.doctor1, assigned_at: now });
 }
-// doctor2 → patient6〜10
 for (const patientId of [userIds.patient6, userIds.patient7, userIds.patient8, userIds.patient9, userIds.patient10]) {
   insertAssignment.run({ id: uuidv4(), patient_id: patientId, provider_id: userIds.doctor2, assigned_at: now });
 }
-// nurse1 → 全患者
-for (const patientId of Object.values(userIds).filter((_, i) => i >= 5)) {
+for (const patientId of [
+  userIds.patient1, userIds.patient2, userIds.patient3, userIds.patient4, userIds.patient5,
+  userIds.patient6, userIds.patient7, userIds.patient8, userIds.patient9, userIds.patient10,
+]) {
   insertAssignment.run({ id: uuidv4(), patient_id: patientId, provider_id: userIds.nurse1, assigned_at: now });
 }
 
-console.log('[seed] assignments: 15件投入完了');
+console.log('[seed] assignments: 20件投入完了');
 
 // ============================================================
 // daily_logs（各患者の過去7日分）
@@ -175,7 +161,6 @@ const insertLog = db.prepare(`
   )
 `);
 
-// 患者ごとに異なる体調パターンを定義
 const patientLogPatterns: Record<string, any[]> = {
   [userIds.patient1]: [
     { daysAgo: 6, fever: 2, steps: '4000_6000', cond: 4, appetite: 7, sleep: 7, attention: 3 },
@@ -294,10 +279,10 @@ const insertTopic = db.prepare(`
   INSERT INTO consultation_topics (id, label, icon, sort_order, is_active, created_at)
   VALUES (@id, @label, @icon, @sort_order, @is_active, @created_at)
 `);
-insertTopic.run({ id: uuidv4(), label: '体調', icon: 'ti-thermometer', sort_order: 1, is_active: 1, created_at: now });
-insertTopic.run({ id: uuidv4(), label: '生活', icon: 'ti-heart',       sort_order: 2, is_active: 1, created_at: now });
-insertTopic.run({ id: uuidv4(), label: '学業', icon: 'ti-book',        sort_order: 3, is_active: 1, created_at: now });
-insertTopic.run({ id: uuidv4(), label: 'その他', icon: 'ti-dots',      sort_order: 4, is_active: 1, created_at: now });
+insertTopic.run({ id: uuidv4(), label: '体調',   icon: 'ti-thermometer', sort_order: 1, is_active: 1, created_at: now });
+insertTopic.run({ id: uuidv4(), label: '生活',   icon: 'ti-heart',       sort_order: 2, is_active: 1, created_at: now });
+insertTopic.run({ id: uuidv4(), label: '学業',   icon: 'ti-book',        sort_order: 3, is_active: 1, created_at: now });
+insertTopic.run({ id: uuidv4(), label: 'その他', icon: 'ti-dots',        sort_order: 4, is_active: 1, created_at: now });
 
 console.log('[seed] consultation_topics: 4件投入完了');
 
@@ -317,9 +302,7 @@ console.log('[seed] ai_providers: 1件投入完了');
 db.prepare(`
   INSERT OR REPLACE INTO system_settings (key, value, updated_at)
   VALUES ('system_prompt', ?, DATETIME('now'))
-`).run(
-  'あなたは相談者の健康状態をサポートするAIアシスタントです。\n医師の診断や処方の代替は禁止です。症状が重い場合は必ず医師への相談を促してください。'
-);
+`).run('あなたは相談者の健康状態をサポートするAIアシスタントです。\n医師の診断や処方の代替は禁止です。症状が重い場合は必ず医師への相談を促してください。');
 
 console.log('[seed] system_settings: 1件投入完了');
 console.log('[seed] シードデータの投入が完了しました');
