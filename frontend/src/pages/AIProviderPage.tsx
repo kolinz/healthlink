@@ -8,8 +8,8 @@ type ProviderType = 'ollama' | 'openai' | 'dify';
 
 const OPENAI_MODEL_PRESETS = [
   { value: 'gpt-5-nano',  label: 'gpt-5-nano（デフォルト）' },
-  { value: 'gpt-4o',      label: 'gpt-4o' },
-  { value: 'gpt-4o-mini', label: 'gpt-4o-mini' },
+  { value: 'gpt-5.4-mini', label: 'gpt-5.4-mini' },
+  { value: 'gpt-5.4-nano', label: 'gpt-5.4-nano' },
   { value: '__custom__',  label: 'その他（直接入力）' },
 ];
 
