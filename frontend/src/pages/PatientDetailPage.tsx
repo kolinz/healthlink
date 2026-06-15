@@ -38,6 +38,7 @@ export default function PatientDetailPage() {
   const [tab, setTab]                     = useState<TabType>('logs');
   const [isLoading, setIsLoading]         = useState(true);
 
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [selectedLogId, setSelectedLogId] = useState<string | null>(null);
   const [noteInput, setNoteInput]         = useState('');
   const [isSavingNote, setIsSavingNote]   = useState(false);
@@ -173,13 +174,23 @@ export default function PatientDetailPage() {
                 <table className="w-full min-w-max">
                   <thead className="bg-background border-b border-gray-100">
                     <tr>
-                      {['日時', 'コンディション', '構ってスコア', '食欲', '熱っぽさ', '歩数', 'ぐっすり度', 'ステータス', '操作'].map((h) => (
+                      <th
+                        className="text-left px-4 py-3 text-xs font-semibold text-gray-500 whitespace-nowrap cursor-pointer hover:text-primary select-none"
+                        onClick={() => setSortOrder((prev) => prev === 'desc' ? 'asc' : 'desc')}
+                      >
+                        日時 {sortOrder === 'desc' ? '↓' : '↑'}
+                      </th>
+                      {['コンディション', '構ってスコア', '食欲', '熱っぽさ', '歩数', 'ぐっすり度', 'ステータス', '操作'].map((h) => (
                         <th key={h} className="text-left px-4 py-3 text-xs font-semibold text-gray-500 whitespace-nowrap">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {logs.map((log, i) => (
+                    {[...logs].sort((a, b) => {
+                      const aTime = new Date(a.logged_at).getTime();
+                      const bTime = new Date(b.logged_at).getTime();
+                      return sortOrder === 'desc' ? bTime - aTime : aTime - bTime;
+                    }).map((log, i) => (
                       <>
                         <tr
                           key={log.id}
