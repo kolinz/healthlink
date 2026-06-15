@@ -129,7 +129,7 @@ export default function HistoryPage() {
                 { label: 'コンディション', value: conditionLabel(selectedLog.condition) },
                 { label: '構ってスコア',   value: `${selectedLog.attention_score}/10` },
                 { label: '食欲',          value: `${selectedLog.appetite_score}/10` },
-                { label: '熱っぽさ',      value: `${selectedLog.fever_score}/10` },
+                { label: '怠さ',      value: `${selectedLog.fever_score}/10` },
                 { label: 'ぐっすり度',    value: `${selectedLog.sleep_quality}/10` },
                 { label: '昨日の歩数',    value: STEPS_LABEL[selectedLog.steps_yesterday] ?? selectedLog.steps_yesterday },
               ].map(({ label, value }) => (
