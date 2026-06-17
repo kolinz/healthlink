@@ -180,7 +180,7 @@ export default function PatientDetailPage() {
                       >
                         日時 {sortOrder === 'desc' ? '↓' : '↑'}
                       </th>
-                      {['コンディション', '構ってスコア', '食欲', '熱っぽさ', '歩数', 'ぐっすり度', 'ステータス', '操作'].map((h) => (
+                      {['コンディション', '構ってスコア', '食欲', '怠さ', '歩数', 'ぐっすり度', 'ステータス', '操作'].map((h) => (
                         <th key={h} className="text-left px-4 py-3 text-xs font-semibold text-gray-500 whitespace-nowrap">{h}</th>
                       ))}
                     </tr>
